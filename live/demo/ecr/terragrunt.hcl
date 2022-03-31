@@ -7,5 +7,6 @@ terraform {
 }
 
 inputs = {
+  env_name        = "demo"
   repository_name = "aws-lambda-go"
 }
