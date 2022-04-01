@@ -61,3 +61,29 @@ Push you image:
 ```
 docker push aws_account_id.dkr.ecr.region.amazonaws.com/demo-aws-lambda-go:0.1.0
 ```
+
+### Provisioning AWS Lambda Function
+
+In the project root directory run the following command to use Terragrunt in the docker container:
+
+```
+docker run -ti --rm -v $HOME/.aws:/root/.aws -v ${HOME}/.ssh:/root/.ssh -v `pwd`:/apps alpine/terragrunt:1.1.7 bash
+```
+
+Enter `live/demo/lambda` directory:
+
+```
+cd live/demo/lambda
+```
+
+Initialize module:
+
+```
+terragrunt init
+```
+
+Run `apply` command:
+
+```
+terragrunt apply
+```
