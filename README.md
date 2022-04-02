@@ -53,13 +53,13 @@ aws ecr get-login-password --region region | docker login --username AWS --passw
 Build your image:
 
 ```
-docker build -t aws_account_id.dkr.ecr.region.amazonaws.com/demo-aws-lambda-go:0.1.0 .
+docker build -t aws_account_id.dkr.ecr.region.amazonaws.com/demo-aws-lambda-go:latest .
 ```
 
 Push you image:
 
 ```
-docker push aws_account_id.dkr.ecr.region.amazonaws.com/demo-aws-lambda-go:0.1.0
+docker push aws_account_id.dkr.ecr.region.amazonaws.com/demo-aws-lambda-go:latest
 ```
 
 ### Provisioning AWS Lambda Function

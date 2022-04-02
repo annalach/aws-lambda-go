@@ -11,7 +11,8 @@ dependency "ecr" {
 }
 
 inputs = {
-  env_name      = "demo"
-  function_name = "aws-lambda-go"
-  image_uri     = "${dependency.ecr.outputs.repository_uri}:0.1.0"
+  env_name       = "demo"
+  function_name  = "aws-lambda-go"
+  repository_uri = dependency.ecr.outputs.repository_uri
+  image_tag      = "latest"
 }
