@@ -35,10 +35,25 @@ resource "aws_iam_role" "lambda_exec" {
   })
 }
 
+resource "aws_iam_role_policy_attachment" "lambda_policy" {
+  role       = aws_iam_role.lambda_exec.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+}
+
+resource "aws_cloudwatch_log_group" "lambda" {
+  name = "/aws/lambda/${local.function_name}"
+
+  retention_in_days = 30
+}
+
 resource "aws_lambda_function" "lambda" {
   function_name = local.function_name
   role          = aws_iam_role.lambda_exec.arn
   image_uri     = "${var.repository_uri}@${data.aws_ecr_image.image.id}"
   package_type  = "Image"
   description   = "Sample Lambda Function, written in Go, deployed as a docker image."
+
+  depends_on = [
+    aws_cloudwatch_log_group.lambda
+  ]
 }
