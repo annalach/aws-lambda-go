@@ -2,7 +2,7 @@
 
 ## Testing locally
 
-In the `src` directory run the following commands to build, run and test your Lambda function:
+In the root directory run the following commands to build, run and test your Lambda function:
 
 ```
 docker build -t aws-lambda-go:latest .
@@ -52,7 +52,7 @@ Login to the Amazon ECR registry:
 aws ecr get-login-password --region region | docker login --username AWS --password-stdin aws_account_id.dkr.ecr.region.amazonaws.com
 ```
 
-In the `src` directory run the following commands to build and push your image to ECR:
+In the root directory run the following commands to build and push your image to ECR:
 
 ```
 docker build -t aws_account_id.dkr.ecr.region.amazonaws.com/demo-aws-lambda-go:latest .
