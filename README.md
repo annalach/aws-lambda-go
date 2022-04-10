@@ -87,3 +87,13 @@ Run `apply` command:
 ```
 terragrunt apply
 ```
+
+## Invoking the function with AWS CLI
+
+```
+aws lambda invoke \
+    --cli-binary-format raw-in-base64-out \
+    --function-name demo-aws-lambda-go \
+    --payload '{ "name": "Anna" }' \
+    response.json
+```
